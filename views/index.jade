@@ -1,0 +1,39 @@
+extends layout
+
+block content
+  h1= title
+  form( method="post")
+    div
+      div
+        span.label First Name :
+        input(type="text", name="fname", id="fname")
+      div
+        span.label Last Name :
+        input(type="text", name="lname", id="lname")
+      div
+        span.label Type :
+        span.label Suggestion
+        input(type='radio', name='type', value='1')
+        span.label Complaint
+        input(type='radio', name='type', value='2')
+      div
+        span.label Message:
+        input(type="text", name="message", id="message")
+      div
+        input(type="submit", value="Submit")
+  p #{message}  
+  - function isEmptyObject(obj) {
+  -      var name;
+  -      for (name in obj) {
+  -        return false;
+  -      }
+  -      return true;
+  -    }
+  - if (isEmptyObject(errors) == false)
+    p.errorMessage= "The following errors occurred:"
+    ul  
+      - each error in errors
+        li= error.msg
+
+    
+  
